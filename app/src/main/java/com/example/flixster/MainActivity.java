@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.DecodeFormat;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
-//        ImageView ivPoster = findViewById(R.id.ivPoster);
+
         movies = new ArrayList<>();
 
         // create adapter
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "Movies: " + movies.size());
                 } catch (JSONException e){
                     Log.i(TAG, "Hit json exception", e);
-//                    e.printStackTrace();
                 }
 
             }

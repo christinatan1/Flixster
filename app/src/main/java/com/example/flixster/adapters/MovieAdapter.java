@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
@@ -69,12 +72,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        RatingBar rbVoteAverage;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            rbVoteAverage = itemView.findViewById(R.id.rbVoteAverage);
 
             itemView.setOnClickListener(this);
         }
@@ -83,6 +88,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             String imageUrl;
+            float voteAverage = movie.getVoteAverage().floatValue();
+            rbVoteAverage.setRating(voteAverage / 2.0f);
 
             // check if phone is in landscape or portrait mode
             if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -90,21 +97,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 GlideApp.with(context)
                         .load(imageUrl)
                         .placeholder(R.drawable.flicks_backdrop_placeholder)
-//                        .override(300, 200)
+                        .apply(new RequestOptions().transforms(new RoundedCorners(10)))
+//                       .override(160, 200)
                         .into(ivPoster);
             } else {
                 imageUrl = movie.getPosterPath();
                 GlideApp.with(context)
                         .load(imageUrl)
                         .placeholder(R.drawable.flicks_movie_placeholder)
+//                        .transform(new RoundedCornersTransformation(10)))
 //                        .override(300, 200)
                         .into(ivPoster);
             }
-
             //Glide.with(context).load(imageUrl).into(ivPoster);
-
         }
-
 
         @Override
         public void onClick(View v) {
