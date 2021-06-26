@@ -19,7 +19,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:numStars="5"
-        android:stepSize="0.5" />
+        android:stepSize="0.5"
+        android:adjustViewBounds="true"/>
 
     <ImageView
         android:id="@+id/ivPoster"
