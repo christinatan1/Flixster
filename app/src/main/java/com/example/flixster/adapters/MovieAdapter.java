@@ -98,18 +98,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                         .load(imageUrl)
                         .placeholder(R.drawable.flicks_backdrop_placeholder)
                         .apply(new RequestOptions().transforms(new RoundedCorners(10)))
-//                       .override(160, 200)
                         .into(ivPoster);
             } else {
                 imageUrl = movie.getPosterPath();
                 GlideApp.with(context)
                         .load(imageUrl)
                         .placeholder(R.drawable.flicks_movie_placeholder)
-//                        .transform(new RoundedCornersTransformation(10)))
-//                        .override(300, 200)
+//                        .apply(new RequestOptions().transforms(new RoundedCorners(10)))
                         .into(ivPoster);
             }
-            //Glide.with(context).load(imageUrl).into(ivPoster);
         }
 
         @Override
@@ -128,9 +125,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 context.startActivity(intent);
             }
         }
-
-
-
     }
 
 }

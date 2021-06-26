@@ -19,6 +19,7 @@ public class Movie {
     String title;
     String overview;
     Double voteAverage;
+    Integer id;
 
     public Double getVoteAverage() {
         return voteAverage;
@@ -34,6 +35,7 @@ public class Movie {
         overview = jsonObject.getString("overview");
 
         voteAverage = jsonObject.getDouble("vote_average");
+        id = jsonObject.getInt("id");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -58,5 +60,9 @@ public class Movie {
 
     public String getOverview() {
         return overview;
+    }
+
+    public String getID() {
+        return String.format("https://api.themoviedb.org/3/movie/%d/videos?api_key=9246f068fc746f1cb06366898c34cccb&language=en-US", id);
     }
 }
