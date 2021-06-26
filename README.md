@@ -36,7 +36,7 @@ GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
-Some challenges I encountered were using the YouTube API and trying to implement video trailers, which unfortunately did not end up working, and using the Glide library. I was able to import the placeholder images in the end, but the rounded corners did not work; the landscape mode backdrop posters also did not adjust correctly after I tried using the Glide libraries. In the future, I hope to successfully add the YouTube API and play trailers in the app.
+Some challenges I encountered were using the YouTube API and trying to implement video trailers, which unfortunately did not end up working, and using the Glide library. I was able to import the placeholder images and load the actual posters with Glide in the end, but the rounded corners did not work. In the future, I hope to successfully add the YouTube API and play trailers in the app.
 
 ## Open-source libraries used
 
